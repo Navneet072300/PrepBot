@@ -7,6 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "../../../components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 const AddNewInterview = () => {
   const [openDialog, setOpenDialog] = useState(false);
@@ -25,6 +26,12 @@ const AddNewInterview = () => {
             <DialogDescription>
               This action cannot be undone. This will permanently delete your
               account and remove your data from our servers.
+              <div className="flex gap-5 justify-end">
+                <Button>Start Interview</Button>
+                <Button variant={"ghost"} onClick={() => setOpenDialog(false)}>
+                  Cancel
+                </Button>
+              </div>
             </DialogDescription>
           </DialogHeader>
         </DialogContent>
