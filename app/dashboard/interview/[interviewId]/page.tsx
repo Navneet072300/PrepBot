@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
+import { Button } from "@/components/ui/button";
 import { db } from "@/utils/db";
 import { mockInterview } from "@/utils/schema";
 import { eq } from "drizzle-orm";
@@ -24,6 +25,7 @@ const Interview = ({ params }: { params: { interviewId: string } }) => {
   const [interviewData, setInterviewData] = useState<
     InterviewData | undefined
   >();
+  const [webcamEnable, setWebcamEnable] = useState(false);
 
   useEffect(() => {
     GetInterviewDetails();
@@ -44,11 +46,27 @@ const Interview = ({ params }: { params: { interviewId: string } }) => {
     <div className="my-10 flex justify-center flex-col items-center">
       <h2 className="font-bold text-2xl">
         Let&apos;s get started with the mock interview!
-        <div className="">
-          <WebcamIcon className="h-72 w-full my-7 p-20 bg-secondary rounded-lg border" />
-          <Webcam />
-        </div>
       </h2>
+      <div className="">
+        {webcamEnable ? (
+          <Webcam
+            onUserMedia={() => setWebcamEnable(true)}
+            onUserMediaError={() => setWebcamEnable(false)}
+            mirrored={true}
+            style={{
+              height: 300,
+              width: 300,
+            }}
+          />
+        ) : (
+          <>
+            <WebcamIcon className="h-72 w-full my-7 p-20 bg-secondary rounded-lg border" />
+            <Button onClick={() => setWebcamEnable(true)}>
+              Enable your webcam and microphone
+            </Button>
+          </>
+        )}
+      </div>
     </div>
   );
 };
