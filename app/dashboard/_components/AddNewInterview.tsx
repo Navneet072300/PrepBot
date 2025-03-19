@@ -17,6 +17,7 @@ import { mockInterview } from "@/utils/schema";
 import { v4 as uuidv4 } from "uuid";
 import { useUser } from "@clerk/nextjs";
 import moment from "moment";
+import { useRouter } from "next/navigation";
 
 const AddNewInterview = () => {
   const [openDialog, setOpenDialog] = useState(false);
@@ -24,9 +25,11 @@ const AddNewInterview = () => {
   const [jobDescription, setJobDescription] = useState<string>("");
   const [jobPosition, setJobPosition] = useState<string>("");
   const [jobExperience, setJobExperience] = useState<string>("");
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
   const [jsonResponse, setJsonResponse] = useState<any[]>([]);
   const { user } = useUser();
   const [isMounted, setIsMounted] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     setIsMounted(true);
@@ -88,6 +91,7 @@ const AddNewInterview = () => {
         console.log("DB Insert Response:", rep);
         if (rep) {
           setOpenDialog(false);
+          router.push("/dashboard/interview" + rep[0]?.mockId);
         }
       }
     } catch (error) {
