@@ -51,10 +51,7 @@ const AddNewInterview = () => {
       console.log("Raw API Response:", rawResponse); // Log raw response for debugging
 
       // Attempt to clean and parse the response
-      const MockJsonRep = rawResponse
-        .replace("```json", "")
-        .replace("```", "")
-        .trim();
+      const MockJsonRep = rawResponse;
 
       // Check if the response is valid JSON
       let parsedResponse;
@@ -91,7 +88,7 @@ const AddNewInterview = () => {
         console.log("DB Insert Response:", rep);
         if (rep) {
           setOpenDialog(false);
-          router.push("/dashboard/interview" + rep[0]?.mockId);
+          router.push("/dashboard/interview/" + rep[0]?.mockId);
         }
       }
     } catch (error) {
