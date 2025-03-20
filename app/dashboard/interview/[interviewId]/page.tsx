@@ -47,39 +47,41 @@ const Interview = ({ params }: { params: { interviewId: string } }) => {
       <h2 className="font-bold text-2xl">
         Let&apos;s get started with the mock interview!
       </h2>
-      <div className="">
-        {webcamEnable ? (
-          <Webcam
-            onUserMedia={() => setWebcamEnable(true)}
-            onUserMediaError={() => setWebcamEnable(false)}
-            mirrored={true}
-            style={{
-              height: 300,
-              width: 300,
-            }}
-          />
-        ) : (
-          <>
-            <WebcamIcon className="h-72 w-full my-7 p-20 bg-secondary rounded-lg border" />
-            <Button onClick={() => setWebcamEnable(true)}>
-              Enable your webcam and microphone
-            </Button>
-          </>
-        )}
-      </div>
-      <div className="flex flex-col my-5 gap-5">
-        <h2 className="text-lg">
-          <strong>Job Role:</strong>
-          {interviewData?.jobPosition}
-        </h2>
-        <h2 className="text-lg">
-          <strong>Job Description:</strong>
-          {interviewData?.jobDes}
-        </h2>
-        <h2 className="text-lg">
-          <strong>Years of Experience:</strong>
-          {interviewData?.jobExp}
-        </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="flex flex-col my-5 gap-5 p-5 rounded-l-lg border">
+          <h2 className="text-lg">
+            <strong>Job Role:</strong>
+            {interviewData?.jobPosition}
+          </h2>
+          <h2 className="text-lg">
+            <strong>Job Description:</strong>
+            {interviewData?.jobDes}
+          </h2>
+          <h2 className="text-lg">
+            <strong>Years of Experience:</strong>
+            {interviewData?.jobExp}
+          </h2>
+        </div>
+        <div className="">
+          {webcamEnable ? (
+            <Webcam
+              onUserMedia={() => setWebcamEnable(true)}
+              onUserMediaError={() => setWebcamEnable(false)}
+              mirrored={true}
+              style={{
+                height: 300,
+                width: 300,
+              }}
+            />
+          ) : (
+            <>
+              <WebcamIcon className="h-72 w-full my-7 p-20 bg-secondary rounded-lg border" />
+              <Button onClick={() => setWebcamEnable(true)}>
+                Enable your webcam and microphone
+              </Button>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
