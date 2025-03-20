@@ -67,6 +67,20 @@ const Interview = ({ params }: { params: { interviewId: string } }) => {
           </>
         )}
       </div>
+      <div className="flex flex-col my-5 gap-5">
+        <h2 className="text-lg">
+          <strong>Job Role:</strong>
+          {interviewData?.jobPosition}
+        </h2>
+        <h2 className="text-lg">
+          <strong>Job Description:</strong>
+          {interviewData?.jobDes}
+        </h2>
+        <h2 className="text-lg">
+          <strong>Years of Experience:</strong>
+          {interviewData?.jobExp}
+        </h2>
+      </div>
     </div>
   );
 };
