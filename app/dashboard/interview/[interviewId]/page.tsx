@@ -68,6 +68,7 @@ const Interview = ({ params }: { params: { interviewId: string } }) => {
               <Lightbulb />
               <strong>Information</strong>
             </h2>
+            <h2 className="">{process.env.NEXT_PUBLIC_INFORMATION}</h2>
           </div>
         </div>
         <div className="">
