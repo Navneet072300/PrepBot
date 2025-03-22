@@ -43,7 +43,7 @@ const Interview = ({ params }: { params: { interviewId: string } }) => {
   };
 
   return (
-    <div className="my-10 flex justify-center flex-col items-center">
+    <div className="my-10 ">
       <h2 className="font-bold text-2xl">
         Let&apos;s get started with the mock interview!
       </h2>
@@ -63,12 +63,14 @@ const Interview = ({ params }: { params: { interviewId: string } }) => {
               {interviewData?.jobExp}
             </h2>
           </div>
-          <div className="">
-            <h2 className="">
+          <div className="p-5 border rounded-lg border-amber-300 bg-yellow-100">
+            <h2 className="flex gap-2 items-center text-yellow-600">
               <Lightbulb />
               <strong>Information</strong>
             </h2>
-            <h2 className="">{process.env.NEXT_PUBLIC_INFORMATION}</h2>
+            <h2 className="mt-3 text-yellow-500">
+              {process.env.NEXT_PUBLIC_INFORMATION}
+            </h2>
           </div>
         </div>
         <div className="">
@@ -91,6 +93,9 @@ const Interview = ({ params }: { params: { interviewId: string } }) => {
             </>
           )}
         </div>
+      </div>
+      <div className="flex justify-end items-end">
+        <Button>Start</Button>
       </div>
     </div>
   );
