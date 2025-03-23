@@ -1,7 +1,10 @@
+"use client";
+
 import { db } from "@/utils/db";
 import { mockInterview } from "@/utils/schema";
 import { eq } from "drizzle-orm";
 import React, { useEffect, useState } from "react";
+import QuestionSection from "./_components/QuestionSection"; // Verify this path
 
 const StartInterview = ({ params }: { params: { interviewId: string } }) => {
   interface InterviewData {
@@ -11,7 +14,7 @@ const StartInterview = ({ params }: { params: { interviewId: string } }) => {
     jobDes: string;
     jobExp: string;
     createdBy: string;
-    createdAt: string | null; // nullable since no .notNull() in schema
+    createdAt: string | null;
     mockId: string;
   }
 
@@ -35,7 +38,13 @@ const StartInterview = ({ params }: { params: { interviewId: string } }) => {
     setInterviewData(result[0]);
   };
 
-  return <div>StartInterview</div>;
+  return (
+    <div className="">
+      <div className="grid grid-cols-1 md:grid-cols-2">
+        <QuestionSection mockInterviewQuestion={mockInterviewQuestion} />
+      </div>
+    </div>
+  );
 };
 
 export default StartInterview;
